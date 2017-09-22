@@ -1,0 +1,26 @@
+# PostgreSQL
+#   gem install pg
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: benja0309
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: rails_aws_dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+
+test:
+  <<: *default
+  database: rails_aws_test
+
+production:
+  <<: *default
+  database: rails_aws_prod
